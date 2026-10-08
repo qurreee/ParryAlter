@@ -1,6 +1,9 @@
 pico-8 cartridge // http://www.pico-8.com
 version 43
 __lua__
+--parryalter
+--by qurredev
+
 --config
 bpm = 120
 beat_time = 60/bpm
@@ -136,7 +139,12 @@ function try_parry(dir)
 				show_judge("perfect",10)
 			else
 				score+= 1
-				show_judge("good",11)
+				if current_beat < s.parry_beat then
+					show_judge("good (early)",12)
+				else
+					show_judge("good (late)",9)
+				end
+				
 			end
 			return true
 		end
